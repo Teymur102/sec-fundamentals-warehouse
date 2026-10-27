@@ -29,6 +29,18 @@ MONEY = {"revenue", "net_income", "total_assets", "shareholders_equity", "first_
 
 EXPORTS = ["latest_fy_comparison", "sector_medians", "financials_scorecard", "coverage_latest_fy",
            "restatement_summary", "audit_restatements", "ratios_annual", "audit_universe", "mart_annual"]
+# Explicit, unique sort keys so every exported CSV is byte-identical across reruns.
+EXPORT_ORDER = {
+    "latest_fy_comparison": "rank_roe nulls last, ticker",
+    "sector_medians": "sector",
+    "financials_scorecard": "ticker, fiscal_year",
+    "coverage_latest_fy": "ticker",
+    "restatement_summary": "restated_values desc, ticker",
+    "audit_restatements": "ticker, concept_code, tag, period_type, period_start nulls first, period_end",
+    "ratios_annual": "ticker, fiscal_year",
+    "audit_universe": "ticker, cik nulls first",
+    "mart_annual": "ticker, fiscal_year",
+}
 
 
 # ---------------------------------------------------------------- formatting
@@ -174,13 +186,13 @@ def build_report(con, results, manifest: dict, stats: dict, out: Path, root: Pat
     tables_dir.mkdir(parents=True, exist_ok=True)
     charts_dir.mkdir(parents=True, exist_ok=True)
     for t in EXPORTS:
-        q(con, f"select * from {t}").to_csv(tables_dir / f"{t}.csv", index=False)
+        q(con, f"select * from {t} order by {EXPORT_ORDER[t]}").to_csv(tables_dir / f"{t}.csv", index=False)
 
-    latest = q(con, "select * from latest_fy_comparison")
-    sectors = q(con, "select * from sector_medians")
-    fin = q(con, "select * from financials_scorecard")
-    cov = q(con, "select * from coverage_latest_fy")
-    rest = q(con, "select * from restatement_summary")
+    latest = q(con, f"select * from latest_fy_comparison order by {EXPORT_ORDER['latest_fy_comparison']}")
+    sectors = q(con, f"select * from sector_medians order by {EXPORT_ORDER['sector_medians']}")
+    fin = q(con, f"select * from financials_scorecard order by {EXPORT_ORDER['financials_scorecard']}")
+    cov = q(con, f"select * from coverage_latest_fy order by {EXPORT_ORDER['coverage_latest_fy']}")
+    rest = q(con, f"select * from restatement_summary order by {EXPORT_ORDER['restatement_summary']}")
     universe = q(con, "select ticker, sector, industry_group, cik, entity_name, hq_city, hq_state, "
                       "exclusion_reason from audit_universe order by exclusion_reason nulls first, ticker")
     company = q(con, "select ticker, entity_name, sector, industry_group, company_type, sic, hq_city "
@@ -335,8 +347,8 @@ def write_markdown_report(path, s, latest, sectors, fin, cov, rest, universe, co
         where feeds_fact_table and materiality like 'material%' and first_value <> 0
           and concept_code in ('revenue', 'net_income', 'total_assets', 'operating_cash_flow')
           and (period_type = 'instant' or date_diff('day', period_start, period_end) between 350 and 380)
-        qualify row_number() over (order by abs(change_pct) desc) <= 12
-        order by abs(change_pct) desc
+        qualify row_number() over (order by abs(change_pct) desc, ticker, concept_code, tag, period_end) <= 12
+        order by abs(change_pct) desc, ticker, concept_code, tag, period_end
     """).df()
     lines = [
         "# Massachusetts public-company fundamentals - warehouse report",

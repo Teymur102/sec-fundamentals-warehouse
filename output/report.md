@@ -145,8 +145,8 @@ Revenue for banks = net interest income + noninterest income. Gross/operating ma
 | ticker | period_end | assets | l_and_e | rel_diff |
 | --- | --- | --- | --- | --- |
 | AMT | 2013-12-31 | 20,214 | 20,284 | -0.3% |
-| TJX | 2014-02-01 | 10,098 | 10,201 | -1.0% |
 | MKSI | 2011-12-31 | 1,134 | 1,119 | 1.3% |
+| TJX | 2014-02-01 | 10,098 | 10,201 | -1.0% |
 
 ### Balance-sheet identity A = L + E - 26 rows
 
@@ -229,8 +229,8 @@ Revenue for banks = net interest income + noninterest income. Gross/operating ma
 | TJX | 103 | 27 | 0 | 96 | 200.0% |
 | BXP | 102 | 65 | 7 | 98 | 174.7% |
 | MRNA | 88 | 10 | 0 | 82 | 4.6% |
-| AKAM | 84 | 58 | 0 | 83 | 44.0% |
 | ADI | 84 | 58 | 0 | 67 | 67.3% |
+| AKAM | 84 | 58 | 0 | 83 | 44.0% |
 | W | 76 | 8 | 0 | 69 | 1.8% |
 | WAT | 65 | 19 | 2 | 55 | 200.0% |
 | HUBS | 63 | 52 | 0 | 57 | 34.5% |

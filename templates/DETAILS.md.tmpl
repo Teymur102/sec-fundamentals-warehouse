@@ -5,9 +5,9 @@ A DuckDB star-schema warehouse of financial statements for ${companies} Massachu
 
 **Headline:** return on equity in this group comes from three different places. In the latest fiscal year ${t1} leads at ${t1_roe} ROE mostly through leverage (equity multiplier ${t1_em}x, asset turnover ${t1_at}x); ${t2} reaches ${t2_roe} on a ${t2_nm} net margin by turning its assets over ${t2_at}x a year; ${bm} has the highest net margin (${bm_nm}) but a ${bm_roe} ROE because it carries little leverage (${bm_em}x). The median non-financial ROE is ${median_roe}.
 
-![DuPont decomposition of ROE](output/charts/dupont_roe.png)
+![DuPont decomposition of ROE](../output/charts/dupont_roe.png)
 
-Full report: [`output/report.md`](output/report.md) (also [`output/report.html`](output/report.html)). Every table is also a CSV in [`output/tables/`](output/tables/).
+Full report: [`output/report.md`](../output/report.md) (also [`output/report.html`](../output/report.html)). Every table is also a CSV in [`output/tables/`](../output/tables/).
 
 ## What's in it
 
@@ -76,7 +76,7 @@ erDiagram
     }
 ```
 
-Layers (all plain SQL in [`sql/`](sql/), run in file order):
+Layers (all plain SQL in [`sql/`](../sql/), run in file order):
 
 - `raw_facts`, `raw_companies` - SEC JSON flattened, nothing changed.
 - `sql/staging/` - `stg_facts`: typed, US-GAAP + USD + 10-K/10-Q only. Still one row per fact per filing.
@@ -87,6 +87,8 @@ Layers (all plain SQL in [`sql/`](sql/), run in file order):
 **Two-step dedupe.** The same number appears in many filings (each 10-K repeats two prior years). Step 1 keeps, for each company + tag + period, the most recently filed value (ties broken by accession number); every older version that differs goes to `audit_restatements`. Step 2 picks one tag per line item by priority: `Revenues` beats `RevenueFromContractWithCustomerExcludingAssessedTax` beats `SalesRevenueNet`. `Revenues` ranks first on purpose: the ASC 606 tag excludes lease income, and for American Tower it is less than 10% of total revenue (check 12). One reviewed exception lives in `seeds/tag_overrides.csv` (Boston Scientific's `Revenues` tag for 2012-2016 is not its net sales).
 
 **Fiscal calendar.** SEC's `fy` field belongs to the filing, not the number: a FY2025 10-K stamps its FY2024 and FY2023 comparatives `fy=2025`. `dim_period` instead learns each company's naming convention from its latest 10-K and applies it to every period. That matters: TJX and BJ's both have a year ending 2026-01-31; TJX calls it fiscal 2026, BJ's calls it fiscal 2025.
+
+**Two one-year periods for the same fiscal year.** State Street and BXP tag some years twice, once as Jan 1 - Dec 31 and once as Dec 31 - Dec 31 (366 days), in different 10-Ks. `mart_annual` keeps one with a fixed rule: more line items first, then the later end date, then the more recently filed facts (the same "latest filed wins" rule as dedupe step 1), then the later start date. Before this rule the choice between tied periods depended on row order, so State Street's fiscal 2011 start date could flip between runs.
 
 **Banks and the insurer.** State Street and Eastern Bankshares get revenue = net interest income + noninterest income (the ASC 606 revenue tag covers fees only). Gross margin, operating margin, free cash flow, cash conversion, debt/equity and asset turnover are not computed for banks and insurers: deposits and policy reserves are their raw material, not financing, and their operating cash flow swings with trading and lending balances. They are compared on ROE, ROA, equity/assets, efficiency ratio and NII share in a separate table.
 
@@ -107,7 +109,7 @@ Why the failures and warnings happen:
 
 ## Example query
 
-[`sql/examples/dupont_top5.sql`](sql/examples/dupont_top5.sql):
+[`sql/examples/dupont_top5.sql`](../sql/examples/dupont_top5.sql):
 
 ```sql
 ${example_sql}

@@ -11,5 +11,5 @@ from ratios_annual r
 where not is_financial
   and roe is not null
   and fiscal_year = (select max(fiscal_year) from ratios_annual x where x.cik = r.cik)
-order by roe desc
+order by roe desc, ticker
 limit 5;

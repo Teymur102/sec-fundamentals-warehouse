@@ -13,4 +13,5 @@ with bs as (
 select d.ticker, bs.period_end, bs.assets, bs.l_and_e, (bs.assets - bs.l_and_e) / bs.assets as rel_diff
 from bs join dim_company d on d.company_key = bs.company_key
 where bs.assets is not null and bs.l_and_e is not null
-  and abs(bs.assets - bs.l_and_e) > 0.001 * abs(bs.assets);
+  and abs(bs.assets - bs.l_and_e) > 0.001 * abs(bs.assets)
+order by all;  -- deterministic row order for output/dq_violations

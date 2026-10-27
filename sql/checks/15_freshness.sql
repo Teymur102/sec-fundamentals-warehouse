@@ -4,4 +4,5 @@
 select ticker, max(period_end) as latest_fy_end, current_date as run_date
 from mart_annual
 group by ticker
-having max(period_end) < current_date - interval 15 month;
+having max(period_end) < current_date - interval 15 month
+order by all;  -- deterministic row order for output/dq_violations

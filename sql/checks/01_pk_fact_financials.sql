@@ -5,4 +5,5 @@
 select company_key, concept_code, period_key, count(*) as n
 from fact_financials
 group by all
-having count(*) > 1;
+having count(*) > 1
+order by all;  -- deterministic row order for output/dq_violations

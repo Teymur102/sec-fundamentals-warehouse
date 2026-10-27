@@ -6,4 +6,5 @@ select ticker, fiscal_year, revenue_reported, cost_of_revenue, gross_profit_repo
        round((gross_profit_reported - (revenue_reported - cost_of_revenue)) / revenue_reported, 4) as rel_diff
 from mart_annual
 where gross_profit_reported is not null and cost_of_revenue is not null and revenue_reported is not null
-  and abs(gross_profit_reported - (revenue_reported - cost_of_revenue)) > 0.01 * abs(revenue_reported);
+  and abs(gross_profit_reported - (revenue_reported - cost_of_revenue)) > 0.01 * abs(revenue_reported)
+order by all;  -- deterministic row order for output/dq_violations

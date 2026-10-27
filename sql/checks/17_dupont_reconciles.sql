@@ -5,4 +5,5 @@
 select ticker, fiscal_year, roe, net_margin * asset_turnover * equity_multiplier as product
 from ratios_annual
 where roe is not null and asset_turnover is not null and net_margin is not null
-  and abs(roe - net_margin * asset_turnover * equity_multiplier) > 1e-9;
+  and abs(roe - net_margin * asset_turnover * equity_multiplier) > 1e-9
+order by all;  -- deterministic row order for output/dq_violations

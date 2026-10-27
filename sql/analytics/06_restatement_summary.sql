@@ -9,4 +9,4 @@ select
     max(abs(change_pct)) filter (where first_value <> 0)               as max_abs_change_pct
 from audit_restatements
 group by ticker
-order by restated_values desc;
+order by restated_values desc, ticker;

@@ -4,15 +4,23 @@
 create or replace table mart_annual as
 with fy_candidates as (
     select p.cik, p.fiscal_year, p.period_key, p.period_start, p.period_end,
-           count(f.concept_code) as n_facts
+           count(f.concept_code) as n_facts,
+           max(f.source_filed)   as latest_filed
     from dim_period p
     left join fact_financials f using (period_key)
     where p.period_length = 'FY'
     group by all
 ),
-fy as (   -- if a company has two one-year periods for the same fiscal year, keep the fuller one
-    select * exclude (rn) from (
-        select *, row_number() over (partition by cik, fiscal_year order by n_facts desc, period_end desc) rn
+-- If a company has two one-year periods for the same fiscal year (e.g. State Street and BXP tag
+-- some years both as Jan 1 - Dec 31 and as Dec 31 - Dec 31), keep, in order: the one with more
+-- line items, the later end date, the more recently filed facts (same rule as dedupe step 1),
+-- then the later start date. Every key is deterministic, so reruns pick the same period.
+fy as (
+    select * exclude (rn, latest_filed) from (
+        select *, row_number() over (
+            partition by cik, fiscal_year
+            order by n_facts desc, period_end desc, latest_filed desc nulls last, period_start desc
+        ) rn
         from fy_candidates
     ) where rn = 1
 ),

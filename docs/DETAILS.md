@@ -5,9 +5,9 @@ A DuckDB star-schema warehouse of financial statements for 23 Massachusetts-head
 
 **Headline:** return on equity in this group comes from three different places. In the latest fiscal year AMT leads at 72% ROE mostly through leverage (equity multiplier 17.7x, asset turnover 0.17x); TJX reaches 59% on a 9.1% net margin by turning its assets over 1.79x a year; VRTX has the highest net margin (32.9%) but a 23% ROE because it carries little leverage (1.37x). The median non-financial ROE is 13.0%.
 
-![DuPont decomposition of ROE](output/charts/dupont_roe.png)
+![DuPont decomposition of ROE](../output/charts/dupont_roe.png)
 
-Full report: [`output/report.md`](output/report.md) (also [`output/report.html`](output/report.html)). Every table is also a CSV in [`output/tables/`](output/tables/).
+Full report: [`output/report.md`](../output/report.md) (also [`output/report.html`](../output/report.html)). Every table is also a CSV in [`output/tables/`](../output/tables/).
 
 ## What's in it
 
@@ -76,7 +76,7 @@ erDiagram
     }
 ```
 
-Layers (all plain SQL in [`sql/`](sql/), run in file order):
+Layers (all plain SQL in [`sql/`](../sql/), run in file order):
 
 - `raw_facts`, `raw_companies` - SEC JSON flattened, nothing changed.
 - `sql/staging/` - `stg_facts`: typed, US-GAAP + USD + 10-K/10-Q only. Still one row per fact per filing.
@@ -87,6 +87,8 @@ Layers (all plain SQL in [`sql/`](sql/), run in file order):
 **Two-step dedupe.** The same number appears in many filings (each 10-K repeats two prior years). Step 1 keeps, for each company + tag + period, the most recently filed value (ties broken by accession number); every older version that differs goes to `audit_restatements`. Step 2 picks one tag per line item by priority: `Revenues` beats `RevenueFromContractWithCustomerExcludingAssessedTax` beats `SalesRevenueNet`. `Revenues` ranks first on purpose: the ASC 606 tag excludes lease income, and for American Tower it is less than 10% of total revenue (check 12). One reviewed exception lives in `seeds/tag_overrides.csv` (Boston Scientific's `Revenues` tag for 2012-2016 is not its net sales).
 
 **Fiscal calendar.** SEC's `fy` field belongs to the filing, not the number: a FY2025 10-K stamps its FY2024 and FY2023 comparatives `fy=2025`. `dim_period` instead learns each company's naming convention from its latest 10-K and applies it to every period. That matters: TJX and BJ's both have a year ending 2026-01-31; TJX calls it fiscal 2026, BJ's calls it fiscal 2025.
+
+**Two one-year periods for the same fiscal year.** State Street and BXP tag some years twice, once as Jan 1 - Dec 31 and once as Dec 31 - Dec 31 (366 days), in different 10-Ks. `mart_annual` keeps one with a fixed rule: more line items first, then the later end date, then the more recently filed facts (the same "latest filed wins" rule as dedupe step 1), then the later start date. Before this rule the choice between tied periods depended on row order, so State Street's fiscal 2011 start date could flip between runs.
 
 **Banks and the insurer.** State Street and Eastern Bankshares get revenue = net interest income + noninterest income (the ASC 606 revenue tag covers fees only). Gross margin, operating margin, free cash flow, cash conversion, debt/equity and asset turnover are not computed for banks and insurers: deposits and policy reserves are their raw material, not financing, and their operating cash flow swings with trading and lending balances. They are compared on ROE, ROA, equity/assets, efficiency ratio and NII share in a separate table.
 
@@ -116,7 +118,7 @@ Layers (all plain SQL in [`sql/`](sql/), run in file order):
 
 Why the failures and warnings happen:
 
-- **Assets = liabilities-and-equity total (3 of 1,377 balance sheets fail: AMT (1), TJX (1), MKSI (1)).** The filers' own statements balance. The break comes from my dedupe: it takes the latest value *per tag*, and in these cases a later filing re-reported only `Assets` for an old date (after a reclassification) and not the matching total. The fix would be to take each balance sheet from a single filing; I left the check failing so the trade-off stays visible.
+- **Assets = liabilities-and-equity total (3 of 1,377 balance sheets fail: AMT (1), MKSI (1), TJX (1)).** The filers' own statements balance. The break comes from my dedupe: it takes the latest value *per tag*, and in these cases a later filing re-reported only `Assets` for an old date (after a reclassification) and not the matching total. The fix would be to take each balance sheet from a single filing; I left the check failing so the trade-off stays visible.
 - **A = L + E (26 of 1,039 fail: BXP (12), VRTX (9), AKAM (2), W (2), PODD (1)).** Most are redeemable or mezzanine equity recorded under company-specific extension tags that a standard-tag model can't see (BXP's redeemable partnership units, Wayfair's pre-IPO convertible preferred, Vertex's redeemable noncontrolling interest in 2011-2013). Akamai's 2015-2016 gaps (liabilities + equity exceed assets by about 1%) are not explained by any standard tag.
 - **Fiscal-year label (12 warnings: TJX (12)).** TJX tagged its year ended 2021-01-30 as fy 2020 and the next year as fy 2022, so fy 2021 never appears. The warehouse uses the current convention for all years.
 - **Revenue tag disagreement (12 warnings: AMT (8), PODD (2), ADI (1), BSX (1)).** Mostly American Tower's lease revenue, which the ASC 606 tag excludes. Tag priority picks the total.
@@ -125,7 +127,7 @@ Why the failures and warnings happen:
 
 ## Example query
 
-[`sql/examples/dupont_top5.sql`](sql/examples/dupont_top5.sql):
+[`sql/examples/dupont_top5.sql`](../sql/examples/dupont_top5.sql):
 
 ```sql
 -- Where does return on equity come from? DuPont split for the five highest-ROE
@@ -141,7 +143,7 @@ from ratios_annual r
 where not is_financial
   and roe is not null
   and fiscal_year = (select max(fiscal_year) from ratios_annual x where x.cik = r.cik)
-order by roe desc
+order by roe desc, ticker
 limit 5;
 ```
 
