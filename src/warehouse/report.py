@@ -1,4 +1,4 @@
-"""Turn warehouse tables into CSVs, charts, report.md / report.html and README.md.
+"""Turn warehouse tables into CSVs, charts, report.md / report.html, README.md and docs/DETAILS.md.
 
 Every number written here is read from a table built in the same run.
 """
@@ -300,8 +300,18 @@ def build_report(con, results, manifest: dict, stats: dict, out: Path, root: Pat
     write_markdown_report(out / "report.md", s, latest, sectors, fin, cov, rest, universe, company, dq, by_id, con)
     write_html_report(out / "report.html", s, latest, sectors, fin, cov, rest, universe, dq, by_id)
 
-    tmpl = string.Template((root / "templates" / "README.md.tmpl").read_text())
-    (root / "README.md").write_text(tmpl.substitute(s))
+    s["n_tests"] = sum(f.read_text().count("\ndef test_") for f in (root / "tests").glob("test_*.py"))
+    reqs = [line.split("==") for line in (root / "requirements.txt").read_text().split()
+            if "==" in line]
+    s["stack"] = " · ".join(f"{name} {ver}" for name, ver in reqs)
+    s.update({f"ver_{name.replace('-', '_')}": ver for name, ver in reqs})
+
+    # long write-up -> docs/DETAILS.md, short visual summary -> README.md
+    (root / "docs").mkdir(exist_ok=True)
+    details = string.Template((root / "templates" / "DETAILS.md.tmpl").read_text())
+    (root / "docs" / "DETAILS.md").write_text(details.substitute(s))
+    readme = string.Template((root / "templates" / "README.md.tmpl").read_text())
+    (root / "README.md").write_text(readme.substitute(s))
     return {"headline": headline, "summary": s}
 
 

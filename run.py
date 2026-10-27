@@ -63,7 +63,7 @@ def main() -> int:
         tested = f" of {r.population:,}" if r.population is not None else ""
         print(f"    {r.status:4}  {r.check_id:32} {r.violations:>4}{tested} violating rows")
 
-    print("6/6 report  tables, charts, report.md/html, README.md")
+    print("6/6 report  tables, charts, report.md/html, README.md, docs/DETAILS.md")
     facts = report.build_report(con, results, manifest, stats, OUT, ROOT)
     con.close()
 
