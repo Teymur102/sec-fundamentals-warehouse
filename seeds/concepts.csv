@@ -1,0 +1,26 @@
+concept_code,line_item,statement,period_type,description
+revenue,Revenue,income_statement,duration,Total revenue (banks: see net_interest_income + noninterest_income)
+cost_of_revenue,Cost of revenue,income_statement,duration,Cost of goods and services sold
+gross_profit,Gross profit,income_statement,duration,Revenue less cost of revenue as reported
+rd_expense,R&D expense,income_statement,duration,Research and development expense
+operating_income,Operating income,income_statement,duration,Operating income (loss)
+interest_expense,Interest expense,income_statement,duration,Interest expense
+pretax_income,Pre-tax income,income_statement,duration,Income from continuing operations before income taxes
+net_income,Net income,income_statement,duration,Net income attributable to the parent
+net_interest_income,Net interest income,income_statement,duration,Bank: interest income less interest expense
+noninterest_income,Noninterest income,income_statement,duration,Bank: fee and other noninterest revenue
+noninterest_expense,Noninterest expense,income_statement,duration,Bank: operating expenses
+operating_cash_flow,Operating cash flow,cash_flow,duration,Net cash provided by operating activities
+capex,Capital expenditures,cash_flow,duration,Payments to acquire property plant and equipment (positive = outflow)
+total_assets,Total assets,balance_sheet,instant,Total assets
+total_liabilities,Total liabilities,balance_sheet,instant,Total liabilities as reported (many filers omit this subtotal)
+liabilities_and_equity,Liabilities and equity,balance_sheet,instant,Total liabilities and stockholders equity
+equity_parent,Shareholders' equity,balance_sheet,instant,Equity attributable to the parent
+equity_total,Total equity incl. NCI,balance_sheet,instant,Equity including noncontrolling interests
+noncontrolling_interest,Noncontrolling interest,balance_sheet,instant,Equity attributable to noncontrolling interests
+temporary_equity,Temporary (mezzanine) equity,balance_sheet,instant,Redeemable equity classified between liabilities and equity
+cash,Cash and equivalents,balance_sheet,instant,Cash and cash equivalents
+debt_total,Total long-term debt,balance_sheet,instant,Long-term debt including current maturities
+debt_noncurrent,Long-term debt (non-current),balance_sheet,instant,Long-term debt excluding current maturities
+debt_current,Current portion of debt,balance_sheet,instant,Current maturities of long-term debt
+deposits,Deposits,balance_sheet,instant,Bank: customer deposits

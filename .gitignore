@@ -1,0 +1,10 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.DS_Store
+# raw SEC JSON (~90 MB) is re-downloaded by run.py; manifest.json records hashes
+data/raw/*.json
+!data/raw/manifest.json
+data/*.duckdb
+data/*.duckdb.wal

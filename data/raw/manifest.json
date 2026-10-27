@@ -1,0 +1,403 @@
+{
+  "user_agent": "Teymur Eyvazov teymur.eyvazov001@umb.edu",
+  "requests_made": 0,
+  "served_from_cache": 49,
+  "resolved": [
+    {
+      "ticker": "STT",
+      "cik": 93751
+    },
+    {
+      "ticker": "EBC",
+      "cik": 1810546
+    },
+    {
+      "ticker": "THG",
+      "cik": 944695
+    },
+    {
+      "ticker": "TJX",
+      "cik": 109198
+    },
+    {
+      "ticker": "BJ",
+      "cik": 1531152
+    },
+    {
+      "ticker": "W",
+      "cik": 1616707
+    },
+    {
+      "ticker": "SAM",
+      "cik": 949870
+    },
+    {
+      "ticker": "KDP",
+      "cik": 1418135
+    },
+    {
+      "ticker": "BSX",
+      "cik": 885725
+    },
+    {
+      "ticker": "PODD",
+      "cik": 1145197
+    },
+    {
+      "ticker": "VRTX",
+      "cik": 875320
+    },
+    {
+      "ticker": "BIIB",
+      "cik": 875045
+    },
+    {
+      "ticker": "MRNA",
+      "cik": 1682852
+    },
+    {
+      "ticker": "TMO",
+      "cik": 97745
+    },
+    {
+      "ticker": "WAT",
+      "cik": 1000697
+    },
+    {
+      "ticker": "HUBS",
+      "cik": 1404655
+    },
+    {
+      "ticker": "PTC",
+      "cik": 857005
+    },
+    {
+      "ticker": "AKAM",
+      "cik": 1086222
+    },
+    {
+      "ticker": "TOST",
+      "cik": 1650164
+    },
+    {
+      "ticker": "ADI",
+      "cik": 6281
+    },
+    {
+      "ticker": "TER",
+      "cik": 97210
+    },
+    {
+      "ticker": "MKSI",
+      "cik": 1049502
+    },
+    {
+      "ticker": "AMT",
+      "cik": 1053507
+    },
+    {
+      "ticker": "BXP",
+      "cik": 1037540
+    }
+  ],
+  "tickers_not_in_sec_file": [
+    "HOLX",
+    "IRBT"
+  ],
+  "files": [
+    {
+      "file": "company_tickers.json",
+      "bytes": 798077,
+      "sha256": "b5be63822ef78687908848b349820d9d6a962af9287e2164f44f4b217259f4ea",
+      "modified_utc": "2026-10-27T22:28:58+00:00"
+    },
+    {
+      "file": "companyfacts_CIK0000006281.json",
+      "bytes": 4435442,
+      "sha256": "f468425da29412efbec29798ecd0f9cc719edd5766d734c5c3fc1092a3fe237c",
+      "modified_utc": "2026-10-27T22:29:12+00:00"
+    },
+    {
+      "file": "companyfacts_CIK0000093751.json",
+      "bytes": 6125312,
+      "sha256": "d0cc3d241a5e56d7b8c72c426c9428278c788a7538ffe37116f68cc8eb2fb7f2",
+      "modified_utc": "2026-10-27T22:29:00+00:00"
+    },
+    {
+      "file": "companyfacts_CIK0000097210.json",
+      "bytes": 5116469,
+      "sha256": "e63938f59166b737c6c5aec9f42095752ee968c24e9c7f8c2fd4053f51572e41",
+      "modified_utc": "2026-10-27T22:29:12+00:00"
+    },
+    {
+      "file": "companyfacts_CIK0000097745.json",
+      "bytes": 5170585,
+      "sha256": "4d98ebd4c91521f5d90f032834b8dec04f78b30758a214be33e6cbba68fa766a",
+      "modified_utc": "2026-10-27T22:29:09+00:00"
+    },
+    {
+      "file": "companyfacts_CIK0000109198.json",
+      "bytes": 3654400,
+      "sha256": "1b8f7be3fed954f682ae56ebe9c56a245f4df3640b92181a2d44d6e086a4905b",
+      "modified_utc": "2026-10-27T22:29:02+00:00"
+    },
+    {
+      "file": "companyfacts_CIK0000857005.json",
+      "bytes": 3852152,
+      "sha256": "35d7f8001e1873d67862c9a42bc8b8683fc38fb7f88e9202f3a63a51575013ed",
+      "modified_utc": "2026-10-27T22:29:10+00:00"
+    },
+    {
+      "file": "companyfacts_CIK0000875045.json",
+      "bytes": 4606215,
+      "sha256": "e49b5a3bbf14de0fb7d239cc7824bd2fd0df6e7d76ccea2ef08421f0f26763e0",
+      "modified_utc": "2026-10-27T22:29:07+00:00"
+    },
+    {
+      "file": "companyfacts_CIK0000875320.json",
+      "bytes": 3925679,
+      "sha256": "3f73be48f9279b6b1c07339b9c5ea0e2a7f5d757cd6f8c4015e141ec7ed8e4b8",
+      "modified_utc": "2026-10-27T22:29:07+00:00"
+    },
+    {
+      "file": "companyfacts_CIK0000885725.json",
+      "bytes": 4784388,
+      "sha256": "06fbd22345eaba9b752251c5e485a8a67a53a54d553376a44919d4724a40c786",
+      "modified_utc": "2026-10-27T22:29:05+00:00"
+    },
+    {
+      "file": "companyfacts_CIK0000944695.json",
+      "bytes": 4636963,
+      "sha256": "4aaa1087bd61fc0942316ddb059275020dc6eda8a7a946f3d044ee796d64b297",
+      "modified_utc": "2026-10-27T22:29:02+00:00"
+    },
+    {
+      "file": "companyfacts_CIK0000949870.json",
+      "bytes": 2918072,
+      "sha256": "fc234b08188f4e358c19b5623175ad5aebbf3319b3416b5ca9020bc8e4bfb8f1",
+      "modified_utc": "2026-10-27T22:29:05+00:00"
+    },
+    {
+      "file": "companyfacts_CIK0001000697.json",
+      "bytes": 4401557,
+      "sha256": "f36772e3c932728e55fc7b158a25d0ab2189ad8ffc3a3e02408c7bfd3ae0b8ed",
+      "modified_utc": "2026-10-27T22:29:09+00:00"
+    },
+    {
+      "file": "companyfacts_CIK0001037540.json",
+      "bytes": 4395080,
+      "sha256": "3d37574f2cc838fdf137bd98d2ee7442126c345dd316659436f63a0c9431f1a2",
+      "modified_utc": "2026-10-27T22:29:14+00:00"
+    },
+    {
+      "file": "companyfacts_CIK0001049502.json",
+      "bytes": 3839109,
+      "sha256": "a739a40eb6d4de20981c81db57789cefb8efc1e23f587350f7e6a0bf2eea1510",
+      "modified_utc": "2026-10-27T22:29:13+00:00"
+    },
+    {
+      "file": "companyfacts_CIK0001053507.json",
+      "bytes": 4977573,
+      "sha256": "4c1b8ff848369d36e2a0e3034f98d0f2060d88215c40a041e493a26de07f8a05",
+      "modified_utc": "2026-10-27T22:29:13+00:00"
+    },
+    {
+      "file": "companyfacts_CIK0001086222.json",
+      "bytes": 3881335,
+      "sha256": "c68c8db25a5b809ca1ae6dfafac44bd2bf2cd13a8c7bd86a985ef1baf236b641",
+      "modified_utc": "2026-10-27T22:29:11+00:00"
+    },
+    {
+      "file": "companyfacts_CIK0001145197.json",
+      "bytes": 3472092,
+      "sha256": "6584a0c4ea0b5c1a6bd593893ae4b27b3d0ac6340c3e20d635b8488d32e2ebea",
+      "modified_utc": "2026-10-27T22:29:06+00:00"
+    },
+    {
+      "file": "companyfacts_CIK0001404655.json",
+      "bytes": 2530368,
+      "sha256": "f259532687f784b291938882beaab403caf24b2abd0c2792ac0940e95a34353d",
+      "modified_utc": "2026-10-27T22:29:10+00:00"
+    },
+    {
+      "file": "companyfacts_CIK0001418135.json",
+      "bytes": 5131878,
+      "sha256": "ada095aed6af778d3862b9fdfb75376ff216af33de7a7bf7f78f2b0fdd4d4416",
+      "modified_utc": "2026-10-27T22:29:05+00:00"
+    },
+    {
+      "file": "companyfacts_CIK0001531152.json",
+      "bytes": 1987444,
+      "sha256": "183033ade8424e8c6e5b4279c73e35a2bd53d43ecc9249a3186a21bfee2466a4",
+      "modified_utc": "2026-10-27T22:29:04+00:00"
+    },
+    {
+      "file": "companyfacts_CIK0001616707.json",
+      "bytes": 1982897,
+      "sha256": "132a4c8683afab1abbf4de6da62819d68e638f8564ebc218ccd3d142e1860465",
+      "modified_utc": "2026-10-27T22:29:04+00:00"
+    },
+    {
+      "file": "companyfacts_CIK0001650164.json",
+      "bytes": 1269697,
+      "sha256": "256411fbb81f82c575457f8f5df796d2a16e8ba434cbc7df86984ad921fd6896",
+      "modified_utc": "2026-10-27T22:29:11+00:00"
+    },
+    {
+      "file": "companyfacts_CIK0001682852.json",
+      "bytes": 1859451,
+      "sha256": "12a0739e5dd00db86b0090739fb41774c5eebf2739f333839f0b619541a28262",
+      "modified_utc": "2026-10-27T22:29:08+00:00"
+    },
+    {
+      "file": "companyfacts_CIK0001810546.json",
+      "bytes": 2656653,
+      "sha256": "f6c48ac6d7c87c60a86fe8c1482f7a90c2e4001c413ed1afe2e1f85c65d27a58",
+      "modified_utc": "2026-10-27T22:29:01+00:00"
+    },
+    {
+      "file": "submissions_CIK0000006281.json",
+      "bytes": 161445,
+      "sha256": "a9af22396a9e37ad595c6efd3c2d9983a5923ca2956b869a3ba175e30b76a842",
+      "modified_utc": "2026-10-27T22:29:11+00:00"
+    },
+    {
+      "file": "submissions_CIK0000093751.json",
+      "bytes": 163142,
+      "sha256": "c75c1e69d8a2880b02480ec9f2bd6949646fccec4668f28de79793887ecd5c3c",
+      "modified_utc": "2026-10-27T22:29:00+00:00"
+    },
+    {
+      "file": "submissions_CIK0000097210.json",
+      "bytes": 157697,
+      "sha256": "5e01fb56239ff710ce3b537644bada41ff4089929dc84c419383fd712504dbf2",
+      "modified_utc": "2026-10-27T22:29:12+00:00"
+    },
+    {
+      "file": "submissions_CIK0000097745.json",
+      "bytes": 158354,
+      "sha256": "f09f281c673d07fcee6f7d4a2bfaea2d90d6f21d447504fbf5c078097e7da66b",
+      "modified_utc": "2026-10-27T22:29:08+00:00"
+    },
+    {
+      "file": "submissions_CIK0000109198.json",
+      "bytes": 157501,
+      "sha256": "aa444feaa11124f3723ae7144380847e06bd6b2c669bfc9714c3c1985b9cadf4",
+      "modified_utc": "2026-10-27T22:29:02+00:00"
+    },
+    {
+      "file": "submissions_CIK0000857005.json",
+      "bytes": 159973,
+      "sha256": "d7fa575c0ea7726d6d2ccde772a4bb7b34486b0e3bff33d40f66dc683aadaf92",
+      "modified_utc": "2026-10-27T22:29:10+00:00"
+    },
+    {
+      "file": "submissions_CIK0000875045.json",
+      "bytes": 158991,
+      "sha256": "c6acb27fe74dc6f623096edb5facaeb273534a0cf9ac3b45e45132d03369d871",
+      "modified_utc": "2026-10-27T22:29:07+00:00"
+    },
+    {
+      "file": "submissions_CIK0000875320.json",
+      "bytes": 157607,
+      "sha256": "538444dc3b09b3b5b43f9a2e0d28943bcd57b3104ca75f8e58be7dc9d9b4b5e0",
+      "modified_utc": "2026-10-27T22:29:06+00:00"
+    },
+    {
+      "file": "submissions_CIK0000885725.json",
+      "bytes": 145853,
+      "sha256": "a488276f88e6ccc0048a423737e02a1b9f31f508d87b11a57c4c990c5273ff79",
+      "modified_utc": "2026-10-27T22:29:05+00:00"
+    },
+    {
+      "file": "submissions_CIK0000944695.json",
+      "bytes": 169599,
+      "sha256": "f826aa6191c0a09c4c4c849d198d01fa666ec4fba15d66da4b0287727bac063e",
+      "modified_utc": "2026-10-27T22:29:01+00:00"
+    },
+    {
+      "file": "submissions_CIK0000949870.json",
+      "bytes": 164019,
+      "sha256": "18951712a2d5fbb8e281fd749e9db0039d183abb0626fb5ceeed94ca2f91f119",
+      "modified_utc": "2026-10-27T22:29:04+00:00"
+    },
+    {
+      "file": "submissions_CIK0001000697.json",
+      "bytes": 158242,
+      "sha256": "dec28b2b1653fb764ba4b0acefb90d394ec9a7314d6f6e5e77faa35c8b998e54",
+      "modified_utc": "2026-10-27T22:29:09+00:00"
+    },
+    {
+      "file": "submissions_CIK0001037540.json",
+      "bytes": 163290,
+      "sha256": "3c6ad6572b2fd02abe029bb4a897328450f917ba0f5da5e3113633199fa5dd9c",
+      "modified_utc": "2026-10-27T22:29:14+00:00"
+    },
+    {
+      "file": "submissions_CIK0001049502.json",
+      "bytes": 158944,
+      "sha256": "7015257950685136a53ca5caf73afab7bb94a0e05763b68c74dd926afc3eca18",
+      "modified_utc": "2026-10-27T22:29:12+00:00"
+    },
+    {
+      "file": "submissions_CIK0001053507.json",
+      "bytes": 162518,
+      "sha256": "7424f5e6f34a6e8e512a32ebf0c4117c56f35e67d4de102356c21b2bbf6e7237",
+      "modified_utc": "2026-10-27T22:29:13+00:00"
+    },
+    {
+      "file": "submissions_CIK0001086222.json",
+      "bytes": 162430,
+      "sha256": "e6728ef05c9f61ed2b6c0e5ed1db0657d7b01bb81ee61367bbd044f220932c3a",
+      "modified_utc": "2026-10-27T22:29:10+00:00"
+    },
+    {
+      "file": "submissions_CIK0001145197.json",
+      "bytes": 159819,
+      "sha256": "5cac48e7190b113093b3fcff4b5a094fceef24addfc1b9140a17ee78c4bc83fd",
+      "modified_utc": "2026-10-27T22:29:06+00:00"
+    },
+    {
+      "file": "submissions_CIK0001404655.json",
+      "bytes": 154764,
+      "sha256": "2d090e014c89dba9f58eb71b8281348cee994c8756a2dfa4412e0d2c3adfad4a",
+      "modified_utc": "2026-10-27T22:29:09+00:00"
+    },
+    {
+      "file": "submissions_CIK0001418135.json",
+      "bytes": 161502,
+      "sha256": "95c929fc4ecc0af9dcbcbfea65a57b1179fd1b56b4db9051d7f33b7f654dbb2e",
+      "modified_utc": "2026-10-27T22:29:05+00:00"
+    },
+    {
+      "file": "submissions_CIK0001531152.json",
+      "bytes": 137032,
+      "sha256": "e3d4aaa46aa264ec531c727a98fabe882a016ee3a037d0765ac4af04c144ab8a",
+      "modified_utc": "2026-10-27T22:29:03+00:00"
+    },
+    {
+      "file": "submissions_CIK0001616707.json",
+      "bytes": 160604,
+      "sha256": "a456b145d9b5042d5fa7a6f04cfe3f605606f2bdedd8f26ed59b079f6c2ff221",
+      "modified_utc": "2026-10-27T22:29:04+00:00"
+    },
+    {
+      "file": "submissions_CIK0001650164.json",
+      "bytes": 158885,
+      "sha256": "0d36be8fb226d7b2c9aa35b014b69525505be01db0b23437364dcf15f826ec3f",
+      "modified_utc": "2026-10-27T22:29:11+00:00"
+    },
+    {
+      "file": "submissions_CIK0001682852.json",
+      "bytes": 156768,
+      "sha256": "c5285f4b09a5383cdbd95d35c360fd50c51fa0833495b5b00fdefb1986180767",
+      "modified_utc": "2026-10-27T22:29:07+00:00"
+    },
+    {
+      "file": "submissions_CIK0001810546.json",
+      "bytes": 80939,
+      "sha256": "46b00a02ae210498dc47be015d8b3d682f0f0dbaa56f58d18c28f4f709840528",
+      "modified_utc": "2026-10-27T22:29:00+00:00"
+    }
+  ]
+}

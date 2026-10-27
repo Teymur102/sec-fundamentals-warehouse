@@ -1,0 +1,18 @@
+check_id,check,severity,status,violating_rows,rows_tested,description
+01_pk_fact_financials,Primary key: fact_financials,error,PASS,0,27916.0,"Exactly one value per (company, line item, period)."
+02_pk_dimensions,Primary keys: dimensions,error,PASS,0,,"dim_company.company_key, dim_concept.concept_code, dim_period.period_key and map_xbrl_tag.tag are unique."
+03_not_null,Not-null keys and values,error,PASS,0,,"Fact keys/values, company identifiers and fiscal years on one-year periods are never null."
+04_referential_integrity,Referential integrity,error,PASS,0,,"Every fact row points at an existing company, concept and period."
+05_one_fy_per_company_year,One fiscal-year period per company-year,error,PASS,0,,"Each (company, fiscal_year) maps to a single fiscal-year end date (catches fiscal-calendar bugs)."
+06_hq_massachusetts,Universe is Massachusetts-headquartered,error,PASS,0,23.0,Every company in dim_company has an MA business address in SEC submissions data.
+07_assets_eq_l_and_e,Assets = Liabilities-and-equity total,error,FAIL,3,1377.0,Reported Assets equals reported LiabilitiesAndStockholdersEquity (within 0.1%) at every balance-sheet date.
+08_balance_sheet_identity,Balance-sheet identity A = L + E,error,FAIL,26,1039.0,"Assets = Liabilities + total equity (incl. noncontrolling interests) + mezzanine equity, within 0.5%, at every balance-sheet date where Liabilities is reported."
+09_revenue_positive,Revenue > 0,error,PASS,0,377.0,Annual revenue is strictly positive for every company-year that has revenue.
+10_yoy_jump_5x,Year-over-year jumps > 5x,warn,WARN,66,1835.0,Flags annual values that moved more than 5x (up or down) vs the prior fiscal year. Not always wrong - each needs a look.
+11_fiscal_year_label,Fiscal-year label matches the filing's own fy,warn,WARN,12,333.0,"For each 10-K, the warehouse's fiscal_year for the filing's own period equals the fy the filer tagged (DocumentFiscalYearFocus)."
+12_revenue_tag_disagreement,Revenue tag variants disagree,warn,WARN,12,,Same company-year reports both Revenues and an ASC 606 revenue tag that differ by more than 1% (tag priority decides which one is used).
+13_gross_profit_consistency,Gross profit = revenue - cost of revenue,warn,WARN,1,177.0,"Where all three are reported, reported gross profit matches revenue minus cost of revenue within 1%."
+14_core_coverage_latest_fy,Core line items present in latest fiscal year,warn,WARN,4,,Lists core line items missing for each company's latest fiscal year (core set depends on company type). Full matrix: output/tables/coverage_latest_fy.csv.
+15_freshness,Latest fiscal year is recent,warn,PASS,0,,"Each company's latest fiscal-year end is within 15 months of the run date (a stale company would distort ""latest year"" comparisons)."
+16_capex_sign,Capex reported as a positive outflow,warn,PASS,0,,PaymentsToAcquire* tags are defined as positive numbers; a negative value means a sign error by the filer.
+17_dupont_reconciles,DuPont components multiply back to ROE,error,PASS,0,295.0,"For non-financials, net margin x asset turnover x equity multiplier equals ROE (to 1e-9). Guards the analytics layer against denominator mismatches."

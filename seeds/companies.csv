@@ -1,0 +1,27 @@
+ticker,sector,industry_group
+STT,Financials,Bank (custody)
+EBC,Financials,Bank (regional)
+THG,Financials,Insurance
+TJX,Consumer,Off-price retail
+BJ,Consumer,Warehouse clubs
+W,Consumer,E-commerce
+SAM,Consumer,Beverages
+KDP,Consumer,Beverages
+BSX,Health Care,Medical devices
+HOLX,Health Care,Medical devices
+PODD,Health Care,Medical devices
+VRTX,Health Care,Biotech
+BIIB,Health Care,Biotech
+MRNA,Health Care,Biotech
+TMO,Health Care,Life-science tools
+WAT,Health Care,Life-science tools
+HUBS,Technology,Software
+PTC,Technology,Software
+AKAM,Technology,Internet infrastructure
+TOST,Technology,Fintech software
+ADI,Technology,Semiconductors
+TER,Technology,Semiconductor equipment
+MKSI,Technology,Semiconductor equipment
+IRBT,Technology,Consumer hardware
+AMT,Real Estate,REIT (towers)
+BXP,Real Estate,REIT (office)

@@ -1,0 +1,2 @@
+ticker,tag,priority,reason
+BSX,Revenues,99,"Boston Scientific's Revenues tag for FY2012-2016 does not equal reported net sales (e.g. FY2016 Revenues = 9076M vs net sales 8386M); use SalesRevenueNet / ASC 606 tag instead"

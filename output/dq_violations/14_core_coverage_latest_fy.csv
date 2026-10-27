@@ -1,0 +1,5 @@
+ticker,company_type,fiscal_year,missing_item
+BIIB,operating,2025,operating_income
+BXP,reit,2025,operating_income
+TJX,operating,2026,operating_income
+TMO,operating,2025,gross_profit
